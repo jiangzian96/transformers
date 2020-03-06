@@ -17,6 +17,7 @@
 
 import logging
 import os
+import json
 
 from ...file_utils import is_tf_available
 from .utils import DataProcessor, InputExample, InputFeatures
@@ -545,7 +546,7 @@ class BoolqProcessor(DataProcessor):
             if i == 0:
                 continue
             guid = "%s-%s" % (set_type, i)
-            d = line[0]
+            d = json.loads(line)
             text_a = d["question"]
             text_b = d["passage"]
             label = d["answer"]
