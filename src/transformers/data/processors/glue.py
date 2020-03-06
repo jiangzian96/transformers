@@ -536,7 +536,7 @@ class BoolqProcessor(DataProcessor):
 
     def get_labels(self):
         """See base class."""
-        return ["FALSE", "TRUE"]
+        return ["false", "true"]
 
     def _create_examples(self, lines, set_type):
         """Creates examples for the training and dev sets."""
@@ -544,10 +544,11 @@ class BoolqProcessor(DataProcessor):
         for (i, line) in enumerate(lines):
             if i == 0:
                 continue
-            guid = "%s-%s" % (set_type, line[0])
-            text_a = line[1]
-            text_b = line[2]
-            label = line[-1]
+            guid = "%s-%s" % (set_type, i)
+            d = line[0]
+            text_a = d["question"]
+            text_b = d["passage"]
+            label = d["answer"]
             examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
         return examples
 
