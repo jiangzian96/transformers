@@ -550,8 +550,8 @@ class BoolqProcessor(DataProcessor):
             text_a = d["question"]
             text_b = d["passage"]
             label = d["label"]
-            print(d)
-            examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
+
+            examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label=str(label)))
         return examples
 
 
