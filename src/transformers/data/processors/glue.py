@@ -522,8 +522,8 @@ class BoolqProcessor(DataProcessor):
         """See base class."""
         return InputExample(
             tensor_dict["idx"].numpy(),
-            tensor_dict["passage"].numpy().decode("utf-8"),
             tensor_dict["question"].numpy().decode("utf-8"),
+            tensor_dict["passage"].numpy().decode("utf-8"),
             str(tensor_dict["label"].numpy()),
         )
 
@@ -547,8 +547,8 @@ class BoolqProcessor(DataProcessor):
                 continue
             d = json.loads(line[0])
             guid = "%s-%s" % (set_type, d["idx"])
-            text_b = d["question"]
-            text_a = d["passage"]
+            text_a = d["question"]
+            text_b = d["passage"]
             label = d["label"]
 
             examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label=str(label)))
