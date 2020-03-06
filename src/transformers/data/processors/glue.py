@@ -546,7 +546,7 @@ class BoolqProcessor(DataProcessor):
             if i == 0:
                 continue
             guid = "%s-%s" % (set_type, i)
-            d = json.loads(line)
+            d = json.loads(line[0])
             text_a = d["question"]
             text_b = d["passage"]
             label = d["answer"]
